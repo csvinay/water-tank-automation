@@ -1,0 +1,2 @@
+# Automatic-Water-Tank-Filling-System
+In this work, an automated water tank filling system is proposed. The system is designed by applying an ultrasonic sensor, an automatic switch module, an Arduino microcontroller, and a submersible water pump in order to automatically switch the water filling. We hope with this system, people will enjoy the supply of water without any worries related to water spills and a wasteful electrical consumption.

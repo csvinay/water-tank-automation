@@ -9,6 +9,8 @@
 LiquidCrystal lcd(RS, E, D4, D5, D6, D7); // initialize the library with the numbers of the interface pins
 int Buzzer = 13;
 int Relay = 10;
+int val=0;
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
 // Creating Charaters for Bar Graph and Reverse Mode Icon
 byte Level0[8] = {
         0b00000,
@@ -70,19 +72,22 @@ void setup()
   lcd.createChar(3, Level3);
   lcd.createChar(4, NoLevel);
   lcd.begin(16, 2); // set up the LCD's number of columns and rows: 
-  
+  pinMode(Buzzer,OUTPUT); //Setup Buzzer pin as output pin
+  pinMode(Relay,OUTPUT); //Setup Relay pin as output pin
    digitalWrite(Relay,LOW);
 }
 
 void loop() 
 {
+  delay(50); // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
+  val=sonar.ping_cm();
   lcd.setCursor(0, 1);
   lcd.print("LOW");
   lcd.setCursor(11, 1);
   lcd.print("HIGH");
  if(val<4) //Water level reaches the Top of the Tank
   {
-
+        
   delay(50);
   lcd.setCursor(3, 1); 
   lcd.write(byte(0));
